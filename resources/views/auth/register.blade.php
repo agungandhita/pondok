@@ -65,8 +65,8 @@
                         </div>
 
                         <div class="w-full">
-                            <h1 class='text-xl font-normal'>Confirm Password</h1>
-                            <input type="password" placeholder='Password' name="password_confirmation"
+                            <h1 class='text-xl font-normal'>Confirm</h1>
+                            <input type="number" placeholder='082231719219' name="telepon"
                                 class='rounded-md w-full border h-12 p-2 border-neutral-300 @error('password')
                     peer
                   @enderror' />

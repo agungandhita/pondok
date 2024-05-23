@@ -1,12 +1,12 @@
 <aside id="logo-sidebar"
-    class="fixed top-0 left-0 z-50 w-80 h-screen -translate-x-full bg-Sidebar lg:translate-x-0 transition-all duration-500"
+    class="fixed top-0 left-0 z-50 w-80 h-screen -translate-x-full lg:translate-x-0 transition-all duration-500"
     aria-label="Sidebar">
     {{-- logo area --}}
     <div class="h-20 mb-2 border-b-[1px] border-main2 px-3 relative">
         <div class=" absolute top-[50%] -translate-y-[50%] p-2 w-full">
             <div class="flex gap-x-4 justify-between w-full pr-[25px]">
                 <div class="flex gap-x-4">
-                    <img src="{{ asset('img/logo.png') }}" alt="" class="object-contain w-7 h-7 my-auto">
+                    <img src="{{ asset('img/logo.png') }}" alt="" class="object-contain w-52 h-20 my-auto">
                     <h1 class="font-semibold text-white text-[21px] my-auto">{{ config('services.aplication.AppName') }}
                     </h1>
                 </div>
@@ -22,16 +22,56 @@
     </div>
     <div class="h-full px-3 pb-[290px] overflow-y-auto bg-Sidebar relative w-80 scrollbar-sidebar">
         <ul class="space-y-2 font-medium">
-            <h1 class="text-gray-400 text-sm">MENU</h1>
             <li>
-                <a href=""
+                <a href="/admin"
                     class="flex items-center p-2 text-gray-400 rounded-lg group relative hover:bg-SidebarActive hover:text-white {{ request()->routeIs('dashboard') ? 'bg-SidebarActive text-white' : '' }}">
                     <i class="ri-dashboard-fill text-[20px] transition duration-75 "></i>
                     <span class="ml-3 font-semibold">Dashboard</span>
 
                 </a>
             </li>
-       
+
+            <li>
+                <a href="/user" 
+                    class="flex items-center p-2 text-gray-400 rounded-lg group relative hover:bg-SidebarActive hover:text-white {{ request()->routeIs('dashboard') ? 'bg-SidebarActive text-white' : '' }}">
+                    <i class="ri-dashboard-fill text-[20px] transition duration-75 "></i>
+                    <span class="ml-3 font-semibold">Buat Akun guru</span>
+
+                </a>
+            </li>
+
+            <li>
+                <a href="/akun-wali"
+                    class="flex items-center p-2 text-gray-400 rounded-lg group relative hover:bg-SidebarActive hover:text-white {{ request()->routeIs('dashboard') ? 'bg-SidebarActive text-white' : '' }}">
+                    <i class="ri-dashboard-fill text-[20px] transition duration-75 "></i>
+                    <span class="ml-3 font-semibold">Kelola akun wali</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="/santri"
+                    class="flex items-center p-2 text-gray-400 rounded-lg group relative hover:bg-SidebarActive hover:text-white {{ request()->routeIs('dashboard') ? 'bg-SidebarActive text-white' : '' }}">
+                    <i class="ri-dashboard-fill text-[20px] transition duration-75 "></i>
+                    <span class="ml-3 font-semibold">Kelola Santri</span>
+
+                </a>
+            </li>
+        
+            <li>
+                <a href="/kelas"
+                    class="flex items-center p-2 text-gray-400 rounded-lg group relative hover:bg-SidebarActive hover:text-white {{ request()->routeIs('dashboard') ? 'bg-SidebarActive text-white' : '' }}">
+                    <i class="ri-dashboard-fill text-[20px] transition duration-75 "></i>
+                    <span class="ml-3 font-semibold">Kelas</span>
+
+                </a>
+            </li>
+
+            
+
+
+            
+            
+
     
             {{-- <li>
                 <a href="{{ route('kelola-pembayaran.index') }}"

@@ -43,4 +43,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function santri()
+    {
+        return $this->hasMany(Santri::class, 'user_id ','user_id');
+    }
+
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class, 'user_id', 'user_id');
+    }
+    
+
+    
 }

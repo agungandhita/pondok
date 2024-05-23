@@ -5,7 +5,7 @@
                 @include('admin.dashboard._header')
 
         {{-- isi --}}
-        <div class="pt-24">
+        <div class="pt-24 bg-slate-200 container w-full">
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                 <div class="bg-white border-[1px] border-main3 rounded-md h-36">
 

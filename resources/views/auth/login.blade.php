@@ -18,7 +18,7 @@
   
         <!-- Right column container -->
         <div class="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
-          <form action="/login" method="POST">
+          <form action="/masuk" method="POST">
           
             @csrf
             <div class="text-center">
