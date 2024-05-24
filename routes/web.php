@@ -73,7 +73,7 @@ Route::middleware('admin')->group(function () {
     //samtri
     Route::get('/santri', [SantriController::class, 'index']);
     Route::post('/santri/create', [SantriController::class, 'store']);
-    Route::post('/santri/update/{id}', [SantriController::class, 'store']);
+    Route::post('/santri/update/{id}', [SantriController::class, 'edit']);
     Route::post('/santri/delete/{id}', [SantriController::class, 'destroy']);
 
 
