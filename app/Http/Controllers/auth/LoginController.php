@@ -33,6 +33,8 @@ class LoginController extends Controller
                 return redirect()->intended('/nadzom');
             } elseif ($user->role == 'quran') {
                 return redirect()->intended('/quran');
+            } elseif ($user->role == 'wali') {
+                return redirect()->intended('/wali');
             }
             
  

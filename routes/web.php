@@ -12,6 +12,7 @@ use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\admin\DashboarController;
 use App\Http\Controllers\admin\SantriController;
 use App\Http\Controllers\quran\QuranController;
+use App\Http\Controllers\wali\WaliController as WaliWaliController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,13 @@ Route::middleware(['auth', 'quran'])->group(function () {
     Route::post('/nilai-santri/update/{id}', [QuranController::class, 'skor']);
 
 
+});
+
+Route::middleware(['auth', 'wali'])->group(function () {
+
+    Route::get('/wali', [WaliWaliController::class, 'index']);
+
+    
 });
 
 

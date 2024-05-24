@@ -67,6 +67,8 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\isAdmin::class,
         'nadzom' => \App\Http\Middleware\isNadzom::class,
         'quran' => \App\Http\Middleware\isQuran::class,
+        'wali' => \App\Http\Middleware\isWali::class,
+
 
 
     ];
