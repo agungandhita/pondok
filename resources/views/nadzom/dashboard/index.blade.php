@@ -2,28 +2,64 @@
 
 @section('container')
     <section>
-                @include('nadzom.dashboard._header')
+        @include('nadzom.dashboard._header')
 
         {{-- isi --}}
-        <div class="px-4 mt-20 pt-6 bg-slate-200 dark:bg-gray-800">
+        <div class="px-4 mt-20 pt-6 bg-slate-200 dark:bg-gray-800 h-screen max-h-full">
 
-            <div class="dark:bg-slate-800 shadow-best bg-white rounded-md justify-between">
-                <div class="flex">
-                <p class="text-4xl capitalize font-semibold py-4 mx-4 text-blue-500">
-                    assalamualaikum Ustad/Ustadzah, {{ auth()->user()->nama   }}
-                </p>
-                <img src="{{ asset ('img/hello.png') }}" class="object-contain w-16 justify-end" alt="">
-            </div>
-        
+            @php
+                use Carbon\Carbon;
+                $currentTime = Carbon::now();
+
+                $currentHour = $currentTime->hour;
+
+            @endphp
+
+            {{-- @dd($currentHour) --}}
+
+            <div class="dark:bg-slate-800 shadow-best bg-white rounded-md justify-between mb-4">
+                <div class="flex justify-between">
+                    <p class="text-4xl capitalize font-semibold py-4 mx-4 text-blue-500">
+                        @if ($currentHour >= 0 && $currentHour < 12)
+                            Selamat pagi, {{ auth()->user()->nama }}
+                        @elseif ($currentHour >= 12 && $currentHour < 15)
+                            Selamat siang, {{ auth()->user()->nama }}
+                        @elseif ($currentHour >= 15 && $currentHour < 17)
+                            Selamat sore, {{ auth()->user()->nama }}
+                        @else
+                            Selamat malam, {{ auth()->user()->nama }}
+                        @endif
+                    </p>
+                    <div class=" justify-end">
+                        <img src="{{ asset('img/logo2.png') }}" class="object-contain w-16" alt="">
+                    </div>
+                </div>
+
+
                 <p class="text-3xl font-serif pb-4 mx-4 uppercase text-black">
-                    selamat datang di dashboard admin {{ auth()->user()->role   }}
+                    Selamat datang di dashboard Penilaian {{ auth()->user()->role }}
                 </p>
             </div>
-        
-            
-          
-                {{-- card-1 start --}}
-                {{-- <div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3 pb-4 ">
+
+
+            <div class="dark:bg-slate-800 shadow-best bg-white rounded-md justify-between mb-8">
+                <div class="flex">
+                    <h1>
+                        
+                    </h1>
+                </div>
+
+                <p class="text-xl font-inter pb-4 mx-4 uppercase text-black">
+                    Tegakan Amar Ma'ruf Nahi mungkar diatas Ahlusunnah Waljamaah
+                </p>
+            </div>
+
+        </div>
+
+
+
+        {{-- card-1 start --}}
+        {{-- <div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3 pb-4 ">
         
                     <div
                         class="items-center justify-between p-4 bg-yellow-300 border border-gray-200 relative rounded-lg shadow-sm dark:border-gray-700 sm:p-6 ">
@@ -52,11 +88,11 @@
                         </div>
                         <div class="w-full" id="new-products-chart"></div>
                     </div> --}}
-                    {{-- card-1 end --}}
-        
-                    
-        
-                    {{-- <div
+        {{-- card-1 end --}}
+
+
+
+        {{-- <div
                         class="items-center justify-between p-4 bg-cyan-500 text-black border border-gray-200 relative rounded-lg shadow-sm dark:border-gray-700 sm:p-6 ">
                         <div class="w-full">
         
@@ -81,12 +117,12 @@
                         </div>
                         <div class="w-full" id="new-products-chart"></div>
                     </div> --}}
-                    {{-- card-2 end --}}
-        
-        
-                    {{-- card-3 start --}}
-        
-                    {{-- <div
+        {{-- card-2 end --}}
+
+
+        {{-- card-3 start --}}
+
+        {{-- <div
                         class="items-center justify-between p-4 bg-green-500 border border-gray-200 relative rounded-lg shadow-sm dark:border-gray-700 sm:p-6 ">
                         <div class="w-full">
         
@@ -115,10 +151,10 @@
                         </div>
                         <div class="w-full" id="new-products-chart"></div>
                     </div> --}}
-                    {{-- card-3 end --}}
-                </div>
-        
-                {{-- <div class="w-full max-w-full mb-4 ">
+        {{-- card-3 end --}}
+        </div>
+
+        {{-- <div class="w-full max-w-full mb-4 ">
                     <div
                         class="border-black/12.5 shadow-soft-xl relative z-20 shadow-best4 flex w-full flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border dark:bg-gray-800">
                         <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-[#FF8400] p-2 pb-0">
@@ -135,6 +171,6 @@
                         </div>
                     </div>
                 </div> --}}
-            </div>
+        </div>
     </section>
 @endsection

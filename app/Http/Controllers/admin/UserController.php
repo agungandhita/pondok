@@ -10,19 +10,35 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index(Request $request)
+    {
 
         $data = User::where('role', 'nadzom')->orWhere('role', 'quran')->get();
+
+
+        $query = $request->input('query');
+
+        if ($query) {
+            $users = User::where('nama', 'like', "%$query%")
+                ->get();
+        } else {
+            $users = User::where('role', 'nadzom')
+                ->orWhere('role', 'quran')
+                ->get();
+        }
 
         // dd($data);
 
 
         return view('admin.akun.index', [
-            'data' => $data
+            'data' => $data,
+            'users' => $users,
+            'query' => $query
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $cek = $request->validate([
             'nama' => 'required|max:255',
             'email' => 'required|email:rfc,dns|unique:users',
@@ -46,8 +62,9 @@ class UserController extends Controller
         return redirect('/user')->with('success', 'Your operation was successful.');
     }
 
-    public function update(Request $request, $id){
-        
+    public function update(Request $request, $id)
+    {
+
         $cek = $request->validate([
             'email' => 'required|email:rfc,dns|unique:users',
             'alamat' => 'required',
@@ -55,16 +72,16 @@ class UserController extends Controller
         ]);
 
         User::find($id)->update([
-                'email' => $cek['email'],
-                'alamat'=> $cek['alamat'],
-                'telepon'=> $cek['telepon']
+            'email' => $cek['email'],
+            'alamat' => $cek['alamat'],
+            'telepon' => $cek['telepon']
         ]);
 
-        return redirect('/user')->with('succes', 'berhasil update' );
+        return redirect('/user')->with('succes', 'berhasil update');
+    }
 
-    } 
-
-    public function destroy(User $user, $id) {
+    public function destroy(User $user, $id)
+    {
 
         // $data = User::where('user_id', $id)->first();
 
@@ -74,7 +91,5 @@ class UserController extends Controller
         $user->delete();
 
         return redirect('/user')->with('success', 'Delete successful to the Guide');
-
-
     }
 }

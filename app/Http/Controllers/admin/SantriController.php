@@ -12,24 +12,26 @@ use App\Http\Controllers\Controller;
 class SantriController extends Controller
 {
 
-    public function index() {
+    public function index(Request $request) {
         $wali = User::where('role', request('role', 'wali'))->get();
 
         $kelas = Kelas::latest()->get();
 
         $coba = Santri::with('kelas', 'wali',)->get();
 
-        // dd($coba);
- 
-        // wali
-        // kelas
-        
-        // dd($data);
+        $keyword = $request->input('keyword');
+
+        $santri = Santri::where('nama', 'like', "%$keyword%")
+            ->orWhereHas('kelas', function ($query) use ($keyword) {
+                $query->where('nama_kelas', 'like', "%$keyword%");
+            })
+            ->with(['wali', 'kelas'])
+            ->get();
 
         return view('admin.santri.index', [
             'wali' => $wali,
             'kelas' => $kelas,
-            'santri' => $coba
+            'santri' => $santri
         ]);
     }
     

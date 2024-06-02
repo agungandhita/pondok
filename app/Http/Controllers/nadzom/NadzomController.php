@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\nadzom;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Santri;
@@ -20,9 +21,13 @@ class NadzomController extends Controller
 
     public function index()
     {
-        
 
-        return view('nadzom.dashboard.index');
+        $currentTime = Carbon::now();
+
+        
+        return view('nadzom.dashboard.index', [
+            'currentHour' => $currentTime
+        ]);
     }
 
     public function nilai()
@@ -32,7 +37,7 @@ class NadzomController extends Controller
         $kelas = $user->kelas;
 
         if ($kelas) {
-            $santri = Santri::whereIn('kelas_id', $kelas->pluck('user_id'))->with('kelas', 'wali')->get();
+            $santri = Santri::whereIn('kelas_id', $kelas->pluck('kelas_id'))->with('kelas', 'wali')->get();
         } else {
             $santri = collect();
         }

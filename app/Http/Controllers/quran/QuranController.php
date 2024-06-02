@@ -19,12 +19,9 @@ class QuranController extends Controller
 
 
     
-        // Periksa apakah ada kelas yang ditemukan untuk pengguna
         if ($kelas) {
-            // Jika ada kelas, ambil data santri yang terkait dengan kelas yang dimiliki oleh pengguna
             $santri = Santri::whereIn('kelas_id', $kelas->pluck('kelas_id'))->with('kelas', 'wali')->get();
         } else {
-            // Jika tidak ada kelas yang ditemukan, set $santri sebagai koleksi kosong
             $santri = collect();
         }
     

@@ -23,7 +23,7 @@
     <div class="h-full px-3 pb-[290px] overflow-y-auto bg-Sidebar relative w-80 scrollbar-sidebar">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="/admin"
+                <a href="/nadzom"
                     class="flex items-center p-2 text-gray-400 rounded-lg group relative hover:bg-SidebarActive hover:text-white {{ request()->routeIs('dashboard') ? 'bg-SidebarActive text-white' : '' }}">
                     <i class="ri-dashboard-fill text-[20px] transition duration-75 "></i>
                     <span class="ml-3 font-semibold">Dashboard</span>

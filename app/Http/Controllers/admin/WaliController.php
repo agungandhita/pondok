@@ -10,15 +10,37 @@ use App\Models\Wali;
 
 class WaliController extends Controller
 {
-    public function index(){
+    public function index(Request $request)
+    {
 
         $data = User::where('role', 'wali')->get();
 
 
-        return view ('admin.akun.wali', compact('data'));
+        $query = $request->input('query');
+
+        if ($query) {
+            $data = User::where('role', 'wali')
+                ->where(function ($q) use ($query) {
+                    $q->where('nama', 'LIKE', "%{$query}%")
+                        ->orWhere('email', 'LIKE', "%{$query}%")
+                        ->orWhere('telepon', 'LIKE', "%{$query}%")
+                        ->orWhere('alamat', 'LIKE', "%{$query}%");
+                })
+                ->get();
+        } else {
+            $data = User::where('role', 'wali')->get();
+        }
+
+
+
+        return view('admin.akun.wali', [
+            'data' => $data,
+            'query' => $query
+        ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $cek = $request->validate([
             'nama' => 'required|max:255',
             'email' => 'required|email:rfc,dns|unique:users',
@@ -42,7 +64,8 @@ class WaliController extends Controller
         return redirect('/akun-wali')->with('success', 'Your operation was successful.');
     }
 
-    public function edit(Request $request, $id) {
+    public function edit(Request $request, $id)
+    {
 
         $cek = $request->validate([
             'email' => 'required|email:rfc,dns|unique:users',
@@ -61,11 +84,11 @@ class WaliController extends Controller
         ]);
 
         return redirect('/akun-wali');
-
     }
 
 
-    public function destroy(User $user, $id) {
+    public function destroy(User $user, $id)
+    {
 
         // $data = User::where('user_id', $id)->first();
 
@@ -75,8 +98,5 @@ class WaliController extends Controller
         $user->delete();
 
         return redirect('/akun-wali')->with('success', 'Delete successful to the Guide');
-
-
     }
-
 }

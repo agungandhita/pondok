@@ -32,7 +32,7 @@
             </li>
 
             <li>
-                <a href="/user" 
+                <a href="/user"
                     class="flex items-center p-2 text-gray-400 rounded-lg group relative hover:bg-SidebarActive hover:text-white {{ request()->routeIs('dashboard') ? 'bg-SidebarActive text-white' : '' }}">
                     <i class="ri-dashboard-fill text-[20px] transition duration-75 "></i>
                     <span class="ml-3 font-semibold">Buat Akun guru</span>
@@ -56,7 +56,7 @@
 
                 </a>
             </li>
-        
+
             <li>
                 <a href="/kelas"
                     class="flex items-center p-2 text-gray-400 rounded-lg group relative hover:bg-SidebarActive hover:text-white {{ request()->routeIs('dashboard') ? 'bg-SidebarActive text-white' : '' }}">
@@ -66,13 +66,13 @@
                 </a>
             </li>
 
-            
 
 
-            
-            
 
-    
+
+
+
+
             {{-- <li>
                 <a href="{{ route('kelola-pembayaran.index') }}"
                     class="flex items-center p-2 text-gray-400 rounded-lg group hover:bg-SidebarActive hover:text-white {{ request()->routeIs('kelola-pembayaran.*') ? 'bg-SidebarActive text-white' : '' }}">
@@ -80,7 +80,7 @@
                     <span class="ml-3 font-semibold">Pembayaran SPP</span>
                 </a>
             </li> --}}
-        
+
         </ul>
 
         {{-- menu bawa --}}
@@ -100,11 +100,8 @@
 
             </form>
             <div class="max-h-[50px] h-full w-full border-t-[1px] border-main2 flex gap-x-3 pt-2">
-                <img src="{{ asset('img/myFoto.jpg') }}" alt=""
-                    class="object-cover w-10 h-10 rounded-full my-auto">
                 <div class="my-auto">
-                    <h1 class="text-lg text-white capitalize">{{ auth()->user()->username }}</h1>
-                    <h1 class="text-sm text-gray-300 capitalize">{{ auth()->user()->role }}</h1>
+                    <h1 class="text-sm text-gray-300 capitalize font-semibold">{{ auth()->user()->role }}</h1>
                 </div>
             </div>
         </div>
